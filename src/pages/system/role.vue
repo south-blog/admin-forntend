@@ -28,13 +28,17 @@ export default defineComponent({
     Tables
   },
   setup() {
+    // 表格数据
     const tableColumns = reactive<ITableColumns[]>([
       { label: 'ID', key: 'id', width: 180, isNotCreat: true },
-      { label: '姓名', key: 'name', width: 180, isSearch: true },
+      { label: '姓名', key: 'name', width: 180 },
       { label: '用户', key: 'auth_ids', width: 180 },
     ])
+    // 搜索数据
     const searchData = ref<ISearchData[]>([])
+    // 表格渲染数据
     const tableData = ref<IRoleRequestData[]>([])
+    // 分页数据
     const pageOptions = reactive<Required<IPageDate>>({
       page: 1,
       pageSize: 20,

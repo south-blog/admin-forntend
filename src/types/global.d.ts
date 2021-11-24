@@ -47,6 +47,7 @@ declare global {
   interface ISearchData {
     label: string;
     key: string;
+    width?: number;
   }
 
   // 新增对话框数据

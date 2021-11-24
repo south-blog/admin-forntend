@@ -26,6 +26,7 @@
             type="password"
             v-model="formData.password"
             autocomplete="off"
+            @keyup.enter="submitForm"
           />
         </el-form-item>
         <el-form-item>
@@ -81,7 +82,7 @@ export default defineComponent({
             if (res.code === 200) {
               const { token } = res.data
               useToken(token)
-              router.push('/dashboard')
+              router.push('/system/user')
             }
           })
         } else {

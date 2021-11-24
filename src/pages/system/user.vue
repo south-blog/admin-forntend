@@ -4,6 +4,7 @@
     :handleSearch="handleSearch"
     :handleCreate="handleCreateVisible"
   />
+
   <common-table
     :data="tableData"
     :columns="tableColumns"
@@ -28,6 +29,7 @@
       </el-table-column>
     </template>
   </common-table>
+
   <common-create
     :data="creatData"
     :formData="formData"
@@ -42,13 +44,13 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref } from 'vue'
 import { IUserRequestData, MESSAGE_SUCCESS } from '@/types'
+import { handleGetCreate, handleGetSearch } from '@/utils/utils'
+import { ElMessage } from 'element-plus'
 import CommonSearch from '@/components/Search.vue'
 import CommonCreate from '@/components/Create.vue'
 import CommonTable from '@/components/Table.vue'
 import CommonDeleteBtn from '@/components/DeleteBtn.vue'
 import API from '@api/system/user'
-import { handleGetCreate, handleGetSearch } from '@/utils/utils'
-import { ElMessage } from 'element-plus'
 
 type IQuery = Partial<IUserRequestData> & IPageDate
 
@@ -128,7 +130,6 @@ export default defineComponent({
         const res = response.data
 
         if (res.code === 200) {
-          console.log("res.data:", res.data)
           formData.value = res.data
         }
       }).finally(() =>  isLoading.value = false)
@@ -162,9 +163,12 @@ export default defineComponent({
       }).finally(() =>  isLoading.value = false)
     }
 
+    // 更改分页页数
     const handleSizeChange = (val: number): void => {
       console.log(`${val} items per page`)
     }
+
+    // 选择下一页
     const handleCurrentChange = (val: number): void => {
       console.log(`current page: ${val}`)
     }

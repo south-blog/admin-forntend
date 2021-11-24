@@ -18,7 +18,7 @@ router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, n
   if (!token && to.path !== '/login') next({ path: `/login?redirect=${to.path}` })
 
     // 有token情况返回首页
-  if (token && to.path === '/login') next({ path: '/dashboard' })
+  if (token && to.path === '/login') next({ path: '/system/user' })
 
   next()
 })

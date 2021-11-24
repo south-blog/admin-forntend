@@ -56,4 +56,25 @@ export const menus: RouteRecordRaw[] = [
       },
     ]
   },
+  {
+    name: 'Website',
+    path: '/website',
+    meta: {
+      title: '官网管理',
+      iconfont: 'icon-guanwangguanli'
+    },
+    component: () => Layout,
+    redirect: '/website/blog',
+    children: [
+      {
+        name: 'WebsiteBlog',
+        path: '/website/blog',
+        meta: {
+          title: '博客管理',
+          iconfont: 'icon-bokexinwen'
+        },
+        component: () => import('@/pages/website/blog.vue')
+      },
+    ]
+  },
 ]
